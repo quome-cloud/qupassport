@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "allowed": {
+      "items": {
+        "properties": {
+          "component": {
+            "enum": [
+              "weights",
+              "prompt",
+              "tools",
+              "data"
+            ]
+          },
+          "max_fraction": {
+            "maximum": 1,
+            "minimum": 0,
+            "type": "number"
+          },
+          "policy": {
+            "enum": [
+              "forbidden",
+              "any_change",
+              "bounded_magnitude"
+            ]
+          }
+        },
+        "required": [
+          "component",
+          "policy"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "allowed"
+  ],
+  "title": "QUOKKAGUARD PCCP (Predetermined Change Control Plan)",
+  "type": "object"
+}

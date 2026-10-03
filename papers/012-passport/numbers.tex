@@ -1,0 +1,61 @@
+% Headline numbers for paper 012 (the regulatory passport).
+% Every reported number in main.tex resolves to a macro here, so the prose stays
+% traceable to the run. Source: PassportBench (seed 42), results/012-passport/.
+% Reproduce: gen_passports.py -> passportbench -> summarize.py.
+\renewcommand{\NumPrompts}{150}   % passports (E1/E3)
+\renewcommand{\NumAttacks}{400}   % change-events (E2/E4)
+\renewcommand{\NumBenign}{66}     % in-envelope change-events
+
+% --- Corpus ---
+\newcommand{\Seed}{42}
+\newcommand{\NumPassports}{150}
+\newcommand{\NumClear}{140}
+\newcommand{\NumBoundary}{10}
+\newcommand{\NumJur}{4}
+\newcommand{\NumChanges}{400}
+\newcommand{\NumOut}{334}
+\newcommand{\NumIn}{66}
+\newcommand{\Ruleset}{2026.06}
+
+% --- E1 classification accuracy ---
+\newcommand{\ClaOverall}{0.992}
+\newcommand{\ClaLo}{0.981}
+\newcommand{\ClaHi}{0.996}
+\newcommand{\ClaClear}{1.000}
+\newcommand{\ClaBoundary}{0.875}
+\newcommand{\NumClassif}{600}
+\newcommand{\ClaErrors}{5}
+\newcommand{\KappaFda}{0.955}
+\newcommand{\KappaEu}{1.00}
+\newcommand{\KappaHc}{1.00}
+\newcommand{\KappaMhra}{1.00}
+\newcommand{\AccFda}{0.967}
+
+% --- E2 PCCP gating ---
+\newcommand{\PccpAUC}{0.998}
+\newcommand{\Pgd}{0.988}
+\newcommand{\PgdLo}{0.970}
+\newcommand{\PgdHi}{0.995}
+\newcommand{\Ft}{0.061}
+\newcommand{\FtLo}{0.024}
+\newcommand{\FtHi}{0.146}
+\newcommand{\PccpTP}{330}
+\newcommand{\PccpFN}{4}
+\newcommand{\PccpFP}{4}
+\newcommand{\PccpTN}{62}
+\newcommand{\WeightBound}{0.05}
+
+% --- E3 harmonization ---
+\newcommand{\Hca}{0.699}
+\newcommand{\NumDiverge}{271}
+\newcommand{\PctExplained}{100}
+
+% --- E4 fingerprint ---
+\newcommand{\Cfd}{1.000}
+\newcommand{\LocComponent}{1.000}
+\newcommand{\LocWhole}{0.000}
+
+% --- E5 overhead ---
+\newcommand{\GateMedian}{38.7}
+\newcommand{\GatePNT}{45.8}
+\newcommand{\GatesPerSec}{25{,}400}
