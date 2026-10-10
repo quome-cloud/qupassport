@@ -20,6 +20,14 @@
 
 A clinical AI agent is cleared at a specific risk class and autonomy level under a Predetermined Change Control Plan (PCCP), then silently drifts as prompts are edited, models swapped, tools added, and data refreshed. The lifecycle layer runs at admission time in the qfire gateway: it verifies an ed25519-signed, versioned passport that classifies the agent's risk and autonomy under FDA, EU AI Act, Health Canada, and MHRA rules, diffs a per-component SHA-256 fingerprint of the live agent against the passport, evaluates every changed component against the PCCP envelope, and refuses registration (fail-closed) on any out-of-envelope change, stamping the passport version into the quledger audit chain. On PassportBench (150 passports, 400 change-events, seed 42) the deterministic classifier reproduces framework-grounded labels at 0.992 accuracy (95% CI [0.981, 0.996]), PCCP gating detects 0.988 of out-of-envelope changes (AUC 0.998), fingerprinting detects and localizes 100% of component swaps, and the gate costs 38.7 us median off the hot path. The central finding is that cross-jurisdiction classification genuinely diverges (mean agreement 0.699), yet every one of the 271 divergences is explained by a documented regulatory difference.
 
+<div align="center">
+
+[![Qupassport: The Regulatory Passport for Clinical AI Agents (talk)](assets/qupassport-video.png)](https://youtu.be/33iogwgcqUE)
+
+**▶ Watch: [Qupassport: The Regulatory Passport for Clinical AI Agents (talk)](https://youtu.be/33iogwgcqUE)**
+
+</div>
+
 `qupassport` is **a module of the QUOKKAGUARD program**: one Rust security gateway (`qfire`) that sits in front of any OpenAI-compatible model endpoint and decides **ALLOW ▸ forward · BLOCK ▸ refuse · ESCALATE ▸ human review** for every request and response. Each module adds exactly one enforcement layer to that gateway plus one adversarial dataset and one paper. This repository is a self-contained snapshot of the gateway with **this layer** (`src/lifecycle/`, on the *admission* path, HAARF control C1/C6), its dataset (**PassportBench**), the experiment harness, and the paper.
 
 > Everything here runs **offline**: no model API keys, no network calls in the experiments.
